@@ -1,8 +1,9 @@
 const std = @import("std");
 const zap = @import("zap");
 const route_handles = @import("route_handles.zig");
+const initRouteMap = std.StaticStringMap(*const fn (zap.Request) void).initComptime;
 
-const routes = std.StaticStringMap(*const fn (zap.Request) void).initComptime(.{
+const routes = initRouteMap(.{
     .{ "/"           , route_handles.home          },
     .{ "/api/hello"  , route_handles.api_hello     },
     .{ "/favicon.ico", route_handles.serve_favicon },
