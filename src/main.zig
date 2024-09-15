@@ -10,7 +10,7 @@ const routes = std.StaticStringMap(*const fn (zap.Request) void).initComptime(.{
 
 pub fn main() !void {
     var listener = zap.HttpListener.init(.{
-        .port = 80,
+        .port = 8080,
         .on_request = request_handler,
         .log = true,
         .max_clients = 100000,
