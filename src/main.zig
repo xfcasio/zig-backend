@@ -16,8 +16,8 @@ pub fn main() !void {
         .max_clients = 100000,
     });
     
-    listener.listen() catch |err| {
-        std.debug.print("{}: Error setting up listener on port 8080", .{err});
+    listener.listen() catch |e| {
+        std.debug.print("{}: Error setting up listener on port 8080", .{e});
         return;
     };
 
@@ -27,7 +27,8 @@ pub fn main() !void {
 }
 
 fn requestHandler(r: zap.Request) void {
-    if (r.path) |path|
+    if (r.path) |path| {
         if (routes.get(path)) |route| route(r)
         else route_handles.pageNotFound(r);
+    }
 }
