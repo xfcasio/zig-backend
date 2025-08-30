@@ -6,11 +6,11 @@ pub fn home(r: Request) void {
     r.sendBody("<html><body>this is /</body></html>") catch return;
 }
 
-pub fn api_hello(r: Request) void {
+pub fn apiHello(r: Request) void {
     if (r.query) |query| std.debug.print("/api/hello got: {s}\n", .{query});
     r.sendBody("<html><body>this is /api/hello</body></html>") catch return;
 }
 
-pub fn serve_favicon(r: Request) void {
-    r.sendBody(@embedFile("favicon.ico")) catch return;
+pub fn serveFavicon(r: Request) void {
+    r.sendBody(@embedFile("assets/favicon.ico")) catch return;
 }
