@@ -28,5 +28,6 @@ pub fn main() !void {
 
 fn requestHandler(r: zap.Request) void {
     if (r.path) |path|
-        if (routes.get(path)) |route| route(r);
+        if (routes.get(path)) |route| route(r)
+        else route_handles.pageNotFound(r);
 }
